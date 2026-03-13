@@ -1,32 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Happy Birthday Akka</title>
 
 <style>
 
 body{
-background:#111;
-font-family:Arial;
+margin:0;
+font-family:Poppins,sans-serif;
 text-align:center;
 color:white;
+
+background-image:url("https://images.unsplash.com/photo-1464349095431-e9a21285b5f3");
+background-size:cover;
+background-position:center;
+height:100vh;
+overflow-x:hidden;
 }
 
+/* Intro screen */
+
+#intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:60px;
+letter-spacing:10px;
+animation:introAnim 3s forwards;
+}
+
+@keyframes introAnim{
+0%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0;visibility:hidden;}
+}
+
+/* Glass card */
+
+.container{
+margin-top:120px;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(12px);
+display:inline-block;
+padding:40px;
+border-radius:20px;
+}
+
+/* start */
+
 .start{
-margin-top:150px;
 font-size:35px;
 cursor:pointer;
 }
 
+/* gift */
+
 #giftBox{
 display:none;
-margin-top:80px;
+margin-top:40px;
 }
 
 .gift{
 width:150px;
 height:150px;
-background:red;
+background:linear-gradient(45deg,#ff0000,#ff4e50);
 margin:auto;
 position:relative;
 border-radius:10px;
@@ -36,7 +80,7 @@ cursor:pointer;
 .lid{
 width:150px;
 height:40px;
-background:#ff4444;
+background:#ff6b6b;
 position:absolute;
 top:-40px;
 border-radius:10px;
@@ -44,24 +88,59 @@ transition:0.6s;
 }
 
 .gift.open .lid{
-transform:translateY(-80px) rotate(-20deg);
+transform:translateY(-90px) rotate(-15deg);
 }
 
-#message{
-display:none;
-font-size:40px;
-margin-top:20px;
+/* typing */
+
+.typing{
+font-family:cursive;
+font-size:45px;
+white-space:nowrap;
+overflow:hidden;
+border-right:3px solid white;
+width:0;
+margin:auto;
+animation:typing 3s steps(30,end) forwards;
 }
 
-#gallery{
-display:none;
-margin-top:30px;
+@keyframes typing{
+to{width:100%;}
 }
 
-img{
-width:250px;
-margin:10px;
+/* gallery */
+
+.gallery{
+margin-top:40px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.photo{
+width:240px;
+margin:15px;
 border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
+opacity:0;
+transform:translateY(40px);
+animation:showPhoto 1s forwards;
+}
+
+.photo:nth-child(1){animation-delay:0.5s;}
+.photo:nth-child(2){animation-delay:1s;}
+.photo:nth-child(3){animation-delay:1.5s;}
+.photo:nth-child(4){animation-delay:2s;}
+.photo:nth-child(5){animation-delay:2.5s;}
+.photo:nth-child(6){animation-delay:3s;}
+.photo:nth-child(7){animation-delay:3.5s;}
+.photo:nth-child(8){animation-delay:4s;}
+
+@keyframes showPhoto{
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 </style>
@@ -69,9 +148,23 @@ border-radius:15px;
 
 <body>
 
+<!-- Intro -->
+
+<div id="intro">
+AKKA
+</div>
+
+<!-- Music -->
+
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2c2b03c3c7.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+
 <div class="start" onclick="showGift()">
-14/03/2026 <br>
-Very Special Day For Me <br><br>
+🎉 14/03/2026 🎉 <br>
+A Very Special Day ❤️ <br><br>
 Tap Here
 </div>
 
@@ -81,20 +174,22 @@ Tap Here
 <div class="lid"></div>
 </div>
 
-<div id="message">
-🎉 Happy Birthday Akka 🎂
+<div id="message" style="display:none;margin-top:20px;">
+<h1 class="typing">🎂 Happy Birthday Akka 🎉</h1>
 </div>
 
-<div id="gallery">
+<div class="gallery">
 
-<img src="photo_2026-03-13_15-52-30.jpg">
-<img src="photo_2026-03-13_15-52-31.jpg">
-<img src="photo_2026-03-13_15-53-48.jpg">
-<img src="photo_2026-03-13_15-53-54.jpg">
-<img src="photo_2026-03-13_15-54-00.jpg">
-<img src="photo_2026-03-13_15-54-05.jpg">
-<img src="photo_2026-03-13_15-56-53.jpg">
-<img src="photo_2026-03-13_15-58-14.jpg">
+<img class="photo" src="photo_2026-03-13_15-52-30.jpg">
+<img class="photo" src="photo_2026-03-13_15-52-31.jpg">
+<img class="photo" src="photo_2026-03-13_15-53-48.jpg">
+<img class="photo" src="photo_2026-03-13_15-53-54.jpg">
+<img class="photo" src="photo_2026-03-13_15-54-00.jpg">
+<img class="photo" src="photo_2026-03-13_15-54-05.jpg">
+<img class="photo" src="photo_2026-03-13_15-56-53.jpg">
+<img class="photo" src="photo_2026-03-13_15-58-14.jpg">
+
+</div>
 
 </div>
 
@@ -110,7 +205,33 @@ document.getElementById("giftBox").style.display="block";
 function openGift(){
 document.getElementById("gift").classList.add("open");
 document.getElementById("message").style.display="block";
-document.getElementById("gallery").style.display="block";
+confetti();
+}
+
+/* confetti */
+
+function confetti(){
+for(let i=0;i<100;i++){
+let c=document.createElement("div");
+c.style.position="fixed";
+c.style.width="8px";
+c.style.height="8px";
+c.style.background="hsl("+Math.random()*360+"deg,100%,50%)";
+c.style.top="-10px";
+c.style.left=Math.random()*window.innerWidth+"px";
+c.style.opacity=0.8;
+document.body.appendChild(c);
+
+let fall=Math.random()*5+3;
+
+c.animate([
+{transform:"translateY(0)"},
+{transform:"translateY(100vh)"}
+],{
+duration:fall*1000,
+iterations:1
+});
+}
 }
 
 </script>
