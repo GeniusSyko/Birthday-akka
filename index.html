@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
+
 <title>Happy Birthday Akka</title>
 
 <style>
 
 body{
 margin:0;
-font-family:cursive;
 background:black;
 color:white;
+font-family:cursive;
 text-align:center;
 overflow:hidden;
 }
 
-/* Intro */
+/* intro */
 
 #intro{
 position:absolute;
@@ -26,18 +28,18 @@ align-items:center;
 justify-content:center;
 font-size:70px;
 background:black;
-animation:fadeout 3s forwards;
+animation:fade 3s forwards;
 }
 
-@keyframes fadeout{
+@keyframes fade{
 0%{opacity:1}
 80%{opacity:1}
 100%{opacity:0;visibility:hidden}
 }
 
-/* Special text */
+/* text */
 
-#mainText{
+#text{
 display:none;
 position:absolute;
 top:45%;
@@ -46,7 +48,12 @@ transform:translate(-50%,-50%);
 font-size:50px;
 }
 
-/* Gift */
+#date{
+font-size:30px;
+margin-top:10px;
+}
+
+/* gift */
 
 #giftBox{
 display:none;
@@ -60,12 +67,13 @@ background:red;
 margin:auto;
 border-radius:10px;
 position:relative;
+cursor:pointer;
 }
 
 .lid{
 width:150px;
 height:40px;
-background:#ff5c5c;
+background:#ff4d4d;
 position:absolute;
 top:-40px;
 transition:1s;
@@ -75,7 +83,7 @@ transition:1s;
 transform:translateY(-90px) rotate(-20deg);
 }
 
-/* Popup */
+/* popup */
 
 #popup{
 display:none;
@@ -87,10 +95,10 @@ background:white;
 color:black;
 padding:20px;
 border-radius:10px;
-font-size:30px;
+font-size:35px;
 }
 
-/* Gallery */
+/* gallery */
 
 #gallery{
 display:none;
@@ -112,6 +120,7 @@ to{opacity:1}
 }
 
 </style>
+
 </head>
 
 <body>
@@ -120,14 +129,24 @@ to{opacity:1}
 AKKA
 </div>
 
-<div id="mainText">
+<div id="text">
+
 Very Special Day For My Akka ❤️
+
+<div id="date">
+
+14 / 03 / 2026
+
+</div>
+
 </div>
 
 <div id="giftBox">
 
 <div class="gift" id="gift">
+
 <div class="lid"></div>
+
 </div>
 
 </div>
@@ -143,12 +162,14 @@ Very Special Day For My Akka ❤️
 </div>
 
 <audio id="music" loop>
+
 <source src="song.mp3.mp3" type="audio/mpeg">
+
 </audio>
 
 <script>
 
-let images = [
+let images=[
 
 "photo_2026-03-13_15-52-30.jpg",
 "photo_2026-03-13_15-52-31.jpg",
@@ -161,56 +182,59 @@ let images = [
 
 ]
 
-let index = 0
+let index=0
 
 setTimeout(()=>{
 
-document.getElementById("mainText").style.display="block"
+document.getElementById("text").style.display="block"
 
 },3000)
 
 setTimeout(()=>{
 
-document.getElementById("mainText").style.display="none"
+document.getElementById("text").style.display="none"
+
 document.getElementById("giftBox").style.display="block"
 
 },6000)
 
-setTimeout(()=>{
+document.getElementById("gift").onclick=function(){
 
-document.getElementById("gift").classList.add("open")
+this.classList.add("open")
 
-},8000)
+document.getElementById("music").play()
 
 setTimeout(()=>{
 
 document.getElementById("popup").style.display="block"
 
-},10000)
+},1000)
 
 setTimeout(()=>{
 
 document.getElementById("popup").style.display="none"
-document.getElementById("giftBox").style.display="none"
-document.getElementById("gallery").style.display="block"
 
-document.getElementById("music").play()
+document.getElementById("giftBox").style.display="none"
+
+document.getElementById("gallery").style.display="block"
 
 showImages()
 
-},12000)
+},4000)
+
+}
 
 function showImages(){
 
-document.getElementById("photo").src = images[index]
+document.getElementById("photo").src=images[index]
 
 setInterval(()=>{
 
 index++
 
-if(index < images.length){
+if(index<images.length){
 
-document.getElementById("photo").src = images[index]
+document.getElementById("photo").src=images[index]
 
 }
 
@@ -221,4 +245,5 @@ document.getElementById("photo").src = images[index]
 </script>
 
 </body>
+
 </html>
