@@ -1,176 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Akka</title>
 
 <style>
 
 body{
 margin:0;
+padding:0;
 background:black;
 color:white;
-font-family:cursive;
-text-align:center;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+height:100vh;
 overflow:hidden;
 }
 
-/* intro */
+h1{
+font-size:45px;
+color:#ff4d6d;
+text-shadow:0 0 20px #ff4d6d;
+}
 
-#intro{
-position:absolute;
+.gallery{
+width:300px;
+height:300px;
+overflow:hidden;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,0.3);
+margin-top:20px;
+}
+
+.gallery img{
 width:100%;
 height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:70px;
-background:black;
-animation:fade 3s forwards;
+object-fit:cover;
 }
 
-@keyframes fade{
-0%{opacity:1}
-80%{opacity:1}
-100%{opacity:0;visibility:hidden}
-}
-
-/* text */
-
-#text{
-display:none;
-position:absolute;
-top:45%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:50px;
-}
-
-#date{
-font-size:30px;
-margin-top:10px;
-}
-
-/* gift */
-
-#giftBox{
-display:none;
-margin-top:200px;
-}
-
-.gift{
-width:150px;
-height:150px;
-background:red;
-margin:auto;
-border-radius:10px;
-position:relative;
-cursor:pointer;
-}
-
-.lid{
-width:150px;
-height:40px;
-background:#ff4d4d;
-position:absolute;
-top:-40px;
-transition:1s;
-}
-
-.open .lid{
-transform:translateY(-90px) rotate(-20deg);
-}
-
-/* popup */
-
-#popup{
-display:none;
-position:absolute;
-top:40%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-color:black;
-padding:20px;
-border-radius:10px;
-font-size:35px;
-}
-
-/* gallery */
-
-#gallery{
-display:none;
-position:absolute;
-top:10%;
-width:100%;
-}
-
-.photo{
-width:320px;
-border-radius:20px;
-box-shadow:0 10px 30px black;
-animation:fadeIn 2s;
-}
-
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
+.date{
+position:fixed;
+bottom:10px;
+right:10px;
+opacity:0.7;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div id="intro">
-AKKA
+<h1>🎂 Happy Birthday Akka 🎂</h1>
+
+<div class="gallery">
+<img id="photo" src="photo_2026-03-13_15-52-30.jpg">
 </div>
 
-<div id="text">
-
-Very Special Day For My Akka ❤️
-
-<div id="date">
-
-14 / 03 / 2026
-
-</div>
-
-</div>
-
-<div id="giftBox">
-
-<div class="gift" id="gift">
-
-<div class="lid"></div>
-
-</div>
-
-</div>
-
-<div id="popup">
-🎉 Happy Birthday Akka 🎂
-</div>
-
-<div id="gallery">
-
-<img id="photo" class="photo">
-
-</div>
-
-<audio id="music" loop>
-
-<source src="song.mp3.mp3" type="audio/mpeg">
-
+<audio autoplay loop>
+<source src="song.mp3" type="audio/mpeg">
 </audio>
+
+<div class="date">
+14 / 03 / 2026
+</div>
 
 <script>
 
 let images=[
-
 "photo_2026-03-13_15-52-30.jpg",
 "photo_2026-03-13_15-52-31.jpg",
 "photo_2026-03-13_15-53-48.jpg",
@@ -179,71 +79,21 @@ let images=[
 "photo_2026-03-13_15-54-05.jpg",
 "photo_2026-03-13_15-56-53.jpg",
 "photo_2026-03-13_15-58-14.jpg"
+];
 
-]
-
-let index=0
-
-setTimeout(()=>{
-
-document.getElementById("text").style.display="block"
-
-},3000)
-
-setTimeout(()=>{
-
-document.getElementById("text").style.display="none"
-
-document.getElementById("giftBox").style.display="block"
-
-},6000)
-
-document.getElementById("gift").onclick=function(){
-
-this.classList.add("open")
-
-document.getElementById("music").play()
-
-setTimeout(()=>{
-
-document.getElementById("popup").style.display="block"
-
-},1000)
-
-setTimeout(()=>{
-
-document.getElementById("popup").style.display="none"
-
-document.getElementById("giftBox").style.display="none"
-
-document.getElementById("gallery").style.display="block"
-
-showImages()
-
-},4000)
-
-}
-
-function showImages(){
-
-document.getElementById("photo").src=images[index]
+let i=0;
 
 setInterval(()=>{
-
-index++
-
-if(index<images.length){
-
-document.getElementById("photo").src=images[index]
-
+i++;
+if(i>=images.length){
+i=0;
 }
 
-},3000)
+document.getElementById("photo").src=images[i];
 
-}
+},2000);
 
 </script>
 
 </body>
-
 </html>
