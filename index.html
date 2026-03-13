@@ -1,72 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Akka</title>
 
 <style>
 
 body{
-margin:0;
-padding:0;
 background:black;
 color:white;
+text-align:center;
 font-family:Arial;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-height:100vh;
-overflow:hidden;
 }
 
 h1{
-font-size:45px;
-color:#ff4d6d;
-text-shadow:0 0 20px #ff4d6d;
-}
-
-.gallery{
-width:300px;
-height:300px;
-overflow:hidden;
-border-radius:20px;
-box-shadow:0 0 20px rgba(255,255,255,0.3);
 margin-top:20px;
+font-size:40px;
+color:#ff4d6d;
 }
 
-.gallery img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.date{
-position:fixed;
-bottom:10px;
-right:10px;
-opacity:0.7;
+img{
+width:90%;
+max-width:500px;
+margin-top:20px;
+border-radius:15px;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <h1>🎂 Happy Birthday Akka 🎂</h1>
 
-<div class="gallery">
 <img id="photo" src="photo_2026-03-13_15-52-30.jpg">
-</div>
 
 <audio autoplay loop>
 <source src="song.mp3" type="audio/mpeg">
 </audio>
-
-<div class="date">
-14 / 03 / 2026
-</div>
 
 <script>
 
@@ -83,8 +56,10 @@ let images=[
 
 let i=0;
 
-setInterval(()=>{
+setInterval(function(){
+
 i++;
+
 if(i>=images.length){
 i=0;
 }
@@ -96,4 +71,5 @@ document.getElementById("photo").src=images[i];
 </script>
 
 </body>
+
 </html>
