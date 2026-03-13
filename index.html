@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Akka</title>
+<title>Birthday Akka</title>
 
 <style>
 
@@ -12,37 +12,99 @@ background:black;
 color:white;
 text-align:center;
 font-family:Arial;
+margin:0;
+padding:0;
+overflow:hidden;
 }
 
-h1{
-margin-top:20px;
+#start{
+position:absolute;
+top:40%;
+left:50%;
+transform:translate(-50%,-50%);
 font-size:40px;
 color:#ff4d6d;
 }
 
-img{
-max-width:90%;
-height:auto;
-margin-top:20px;
-border-radius:15px;
+#date{
+display:none;
+font-size:35px;
+margin-top:40px;
 }
+
+#gift{
+display:none;
+font-size:100px;
+cursor:pointer;
+margin-top:50px;
+}
+
+#main{
+display:none;
+}
+
+h1{
+color:#ff4d6d;
+}
+
+img{
+max-width:80%;
+height:auto;
+border-radius:20px;
+margin-top:20px;
+}
+
 </style>
 
 </head>
 
 <body>
 
+<div id="start">✨ Very Special Day For Akka ✨</div>
+
+<div id="date">14 / 03 / 2026</div>
+
+<div id="gift" onclick="openGift()">🎁</div>
+
+<div id="main">
+
 <h1>🎂 Happy Birthday Akka 🎂</h1>
 
 <img id="photo" src="photo_2026-03-13_15-52-30.jpg">
 
-<audio autoplay loop>
+<audio id="music" loop>
 <source src="song.mp3" type="audio/mpeg">
 </audio>
 
+</div>
+
 <script>
 
+setTimeout(function(){
+
+document.getElementById("start").style.display="none";
+document.getElementById("date").style.display="block";
+
+},3000);
+
+setTimeout(function(){
+
+document.getElementById("date").style.display="none";
+document.getElementById("gift").style.display="block";
+
+},6000);
+
+function openGift(){
+
+document.getElementById("gift").style.display="none";
+document.getElementById("main").style.display="block";
+
+document.getElementById("music").play();
+
+}
+
 let images=[
+
 "photo_2026-03-13_15-52-30.jpg",
 "photo_2026-03-13_15-52-31.jpg",
 "photo_2026-03-13_15-53-48.jpg",
@@ -51,6 +113,7 @@ let images=[
 "photo_2026-03-13_15-54-05.jpg",
 "photo_2026-03-13_15-56-53.jpg",
 "photo_2026-03-13_15-58-14.jpg"
+
 ];
 
 let i=0;
