@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Akka</title>
+
+<style>
+
+body{
+background:#111;
+font-family:Arial;
+text-align:center;
+color:white;
+}
+
+.start{
+margin-top:150px;
+font-size:35px;
+cursor:pointer;
+}
+
+#giftBox{
+display:none;
+margin-top:80px;
+}
+
+.gift{
+width:150px;
+height:150px;
+background:red;
+margin:auto;
+position:relative;
+border-radius:10px;
+cursor:pointer;
+}
+
+.lid{
+width:150px;
+height:40px;
+background:#ff4444;
+position:absolute;
+top:-40px;
+border-radius:10px;
+transition:0.6s;
+}
+
+.gift.open .lid{
+transform:translateY(-80px) rotate(-20deg);
+}
+
+#message{
+display:none;
+font-size:40px;
+margin-top:20px;
+}
+
+#gallery{
+display:none;
+margin-top:30px;
+}
+
+img{
+width:250px;
+margin:10px;
+border-radius:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="start" onclick="showGift()">
+14/03/2026 <br>
+Very Special Day For Me <br><br>
+Tap Here
+</div>
+
+<div id="giftBox">
+
+<div class="gift" onclick="openGift()" id="gift">
+<div class="lid"></div>
+</div>
+
+<div id="message">
+🎉 Happy Birthday Akka 🎂
+</div>
+
+<div id="gallery">
+
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+
+</div>
+
+</div>
+
+<script>
+
+function showGift(){
+document.querySelector(".start").style.display="none";
+document.getElementById("giftBox").style.display="block";
+}
+
+function openGift(){
+document.getElementById("gift").classList.add("open");
+document.getElementById("message").style.display="block";
+document.getElementById("gallery").style.display="block";
+}
+
+</script>
+
+</body>
+</html>
